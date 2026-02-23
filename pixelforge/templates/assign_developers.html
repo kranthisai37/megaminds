@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="mb-4">
+        <h2 class="fw-bold">Assign Developers</h2>
+        <p class="text-muted">
+            Project: <span class="fw-semibold">{{ project.name }}</span>
+        </p>
+    </div>
+
+    <!-- Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">Select Developers</h5>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Developers Field -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Developers</label>
+                    <div class="border rounded p-3 bg-light">
+                        {{ form.developers }}
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                        ← Back
+                    </a>
+
+                    <button type="submit" class="btn btn-warning">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

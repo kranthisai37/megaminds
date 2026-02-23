@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <div class="card shadow-lg border-0" style="width: 400px;">
+        
+        <div class="card-header bg-dark text-white text-center">
+            <h4 class="mb-0">PixelForge Login</h4>
+        </div>
+
+        <div class="card-body shadow p-4">
+
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    {{ form.password }}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-dark">
+                        Login
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="card-footer shadow text-center text-muted">
+            Secure Project Management System
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

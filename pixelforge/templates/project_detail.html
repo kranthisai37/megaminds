@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+<div class="container mt-5">
+
+    <!-- Project Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">{{ project.name }}</h2>
+            <span class="badge 
+                {% if project.status == 'active' %}
+                    bg-success
+                {% else %}
+                    bg-secondary
+                {% endif %}
+            ">
+                {{ project.status|title }}
+            </span>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+            ← Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Documents Section -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Project Documents</h5>
+        </div>
+
+        <div class="card-body">
+
+            {% if documents %}
+                <div class="list-group">
+                    {% for doc in documents %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            
+                            <div>
+                                <i class="bi bi-file-earmark-text me-2"></i>
+                                {{ doc.file.name|cut:"documents/" }}
+                            </div>
+
+                            <a href="{{ doc.file.url }}" 
+                               class="btn btn-sm btn-outline-primary"
+                               target="_blank">
+                               View
+                            </a>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    No documents uploaded yet.
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
